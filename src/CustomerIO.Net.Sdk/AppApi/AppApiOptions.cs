@@ -4,7 +4,7 @@ namespace CustomerIO.Net.Sdk.AppApi;
 
 public class AppApiOptions : BaseApiOptions
 {
-    public override required string Host { get; set; } = AppApiHosts.US;
+    public override string Host { get; set; } = AppApiHosts.US;
 }
 
 public class AppApiHosts
