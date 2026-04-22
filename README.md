@@ -4,40 +4,6 @@ An unofficial .NET 10 SDK for the [Customer.io](https://customer.io) REST APIs.
 
 ## API Clients
 
-### Track API (`CustomerIOTrackApiClient`)
-
-Wraps the [Track API](https://docs.customer.io/integrations/api/track/) — used to identify people, track events, manage devices, and interact with segments and forms. Authenticates with HTTP Basic auth using your **Site ID** as the API key.
-
-```csharp
-var client = new CustomerIOTrackApiClient(new TrackApiOptions
-{
-    ApiKey = "YOUR_SITE_ID",
-    Host = TrackApiHosts.US // or TrackApiHosts.EU
-});
-
-await client.IdentifyCustomerAsync("user-123", new IdentifyCustomerRequest
-{
-    Attributes = new Dictionary<string, object?>
-    {
-        ["email"] = "jane@example.com",
-        ["name"] = "Jane Smith",
-        ["plan"] = "pro"
-    }
-});
-
-await client.TrackEventAsync("user-123", new TrackEventRequest
-{
-    Name = "Order Placed",
-    Attributes = new Dictionary<string, object?>
-    {
-        ["order_id"] = "ord-456",
-        ["total"] = 99.99
-    }
-});
-```
-
----
-
 ### App API (`CustomerIOAppApiClient`)
 
 Wraps the [App API](https://docs.customer.io/integrations/api/app/) — used to manage campaigns, broadcasts, transactional messages, newsletters, segments, customers, exports, snippets, collections, reporting webhooks, and sender identities. Authenticates with a Bearer token using your **App API key**.
@@ -65,6 +31,40 @@ var result = await client.SendEmailAsync(new SendEmailRequest
 var customers = await client.SearchCustomersAsync(new CustomerSearchRequest
 {
     Filter = new Dictionary<string, object?> { ["email"] = "jane@example.com" }
+});
+```
+
+---
+
+### Track API (`CustomerIOTrackApiClient`)
+
+Wraps the [Track API](https://docs.customer.io/integrations/api/track/) — used to identify people, track events, manage devices, and interact with segments and forms. Authenticates with HTTP Basic auth using your **Site ID** as the API key.
+
+```csharp
+var client = new CustomerIOTrackApiClient(new TrackApiOptions
+{
+    ApiKey = "YOUR_TRACK_API_KEY",
+    Host = TrackApiHosts.US // or TrackApiHosts.EU
+});
+
+await client.IdentifyCustomerAsync("user-123", new IdentifyCustomerRequest
+{
+    Attributes = new Dictionary<string, object?>
+    {
+        ["email"] = "jane@example.com",
+        ["name"] = "Jane Smith",
+        ["plan"] = "pro"
+    }
+});
+
+await client.TrackEventAsync("user-123", new TrackEventRequest
+{
+    Name = "Order Placed",
+    Attributes = new Dictionary<string, object?>
+    {
+        ["order_id"] = "ord-456",
+        ["total"] = 99.99
+    }
 });
 ```
 
