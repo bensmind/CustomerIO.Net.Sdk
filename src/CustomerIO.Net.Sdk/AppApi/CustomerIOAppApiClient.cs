@@ -12,6 +12,10 @@ public partial class CustomerIOAppApiClient : BaseApiClient<AppApiOptions>, ICus
         : base(options)
     { }
 
+    internal CustomerIOAppApiClient(AppApiOptions options, HttpClient httpClient)
+        : base(options, httpClient)
+    { }
+
     private HttpRequestMessage BuildBaseRequest(HttpMethod method, string endpoint)
         => BuildBearerAuthRequest(method, endpoint);
 }

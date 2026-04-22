@@ -12,6 +12,10 @@ public partial class CustomerIOPipelinesApiClient : BaseApiClient<PipelinesApiOp
         : base(options)
     { }
 
+    internal CustomerIOPipelinesApiClient(PipelinesApiOptions options, HttpClient httpClient)
+        : base(options, httpClient)
+    { }
+
     private HttpRequestMessage BuildBaseRequest(HttpMethod method, string endpoint, bool strictMode = false)
     {
         var req = BuildBasicAuthRequest(method, endpoint);

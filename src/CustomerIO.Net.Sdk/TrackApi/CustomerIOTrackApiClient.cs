@@ -12,6 +12,10 @@ public partial class CustomerIOTrackApiClient : BaseApiClient<TrackApiOptions>, 
         : base(options)
     { }
 
+    internal CustomerIOTrackApiClient(TrackApiOptions options, HttpClient httpClient)
+        : base(options, httpClient)
+    { }
+
     private HttpRequestMessage BuildBaseRequest(HttpMethod method, string endpoint)
         => BuildBasicAuthRequest(method, endpoint);
 }

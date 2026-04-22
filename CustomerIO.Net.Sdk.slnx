@@ -1,3 +1,8 @@
 <Solution>
-  <Project Path="src/CustomerIO.Net.Sdk/CustomerIO.Net.Sdk.csproj" />
+  <Folder Name="/test/">
+    <Project Path="test/CustomerIO.Net.Sdk.UnitTests/CustomerIO.Net.Sdk.UnitTests.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/CustomerIO.Net.Sdk/CustomerIO.Net.Sdk.csproj" />
+  </Folder>
 </Solution>
