@@ -4,6 +4,7 @@ namespace CustomerIO.Net.Sdk.PipelinesApi;
 
 public class PipelinesApiOptions : BaseApiOptions
 {
+    public override required string Host { get; set; } = PipelinesApiHosts.US;
 }
 
 public static class PipelinesApiHosts

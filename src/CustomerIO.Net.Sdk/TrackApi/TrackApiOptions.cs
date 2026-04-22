@@ -4,6 +4,7 @@ namespace CustomerIO.Net.Sdk.TrackApi;
 
 public class TrackApiOptions : BaseApiOptions
 {
+    public override required string Host { get; set; } = TrackApiHosts.US;
 }
 
 public class TrackApiHosts

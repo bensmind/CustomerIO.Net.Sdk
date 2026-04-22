@@ -6,18 +6,18 @@ namespace CustomerIO.Net.Sdk.Shared;
 /// Base class for all Customer.io API clients. Manages the <see cref="HttpClient"/>
 /// and provides helper methods for building authenticated requests.
 /// </summary>
-public abstract class BaseApiClient<TOptions> where TOptions : BaseApiOptions
+public abstract class BaseApiClient<TOptions>(TOptions options, HttpClient httpClient) where TOptions : BaseApiOptions
 {
-    protected readonly TOptions _options;
-    protected readonly HttpClient _client;
+    protected readonly TOptions _options = options;
+    protected readonly HttpClient _client = httpClient;
 
-    protected BaseApiClient(TOptions options, string defaultHost)
+    protected BaseApiClient(TOptions options)
+    : this(options, new HttpClient
     {
-        _options = options;
-        _client = new HttpClient
-        {
-            BaseAddress = new Uri(options.Host ?? defaultHost)
-        };
+        BaseAddress = new Uri(options.Host)
+    })
+    {
+
     }
 
     /// <summary>

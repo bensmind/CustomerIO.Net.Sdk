@@ -5,11 +5,11 @@ namespace CustomerIO.Net.Sdk.PipelinesApi;
 public partial class CustomerIOPipelinesApiClient : BaseApiClient<PipelinesApiOptions>, ICustomerIOPipelinesApiClient
 {
     public CustomerIOPipelinesApiClient(string apiKey)
-        : this(new PipelinesApiOptions { ApiKey = apiKey })
+        : this(new PipelinesApiOptions { ApiKey = apiKey, Host = PipelinesApiHosts.US })
     { }
 
     public CustomerIOPipelinesApiClient(PipelinesApiOptions options)
-        : base(options, PipelinesApiHosts.US)
+        : base(options)
     { }
 
     private HttpRequestMessage BuildBaseRequest(HttpMethod method, string endpoint, bool strictMode = false)
